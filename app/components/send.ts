@@ -3,9 +3,9 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const loader = async () => {
+export const send = async () => {
     const { data, error } = await resend.emails.send({
-        from: 'Heuris <daniel.gregg@heuris.com.au',
+        from: 'Heuris <daniel.gregg@heuris.com.au>',
         to: ['spaniel.boone@gmail.com'],
         subject: 'Hello World',
         html: '<strong>It Works!</strong>',
@@ -17,3 +17,4 @@ export const loader = async () => {
 
     return json(data, 200);
 }
+

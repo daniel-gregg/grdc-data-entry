@@ -30,8 +30,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet /* context={{ supabase, session }} */ />
-        {/* <Landing />   need to have this so it directs through _INDEX not loaded here... */}
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
