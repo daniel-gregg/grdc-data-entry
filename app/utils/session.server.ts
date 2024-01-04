@@ -1,7 +1,7 @@
-import {createSessionCookieStorage } from '@remix-run/node'
+import {createCookieSessionStorage } from '@remix-run/node'
 
 // export the whole sessionStorage object
-export let sessionStorage = createSessionCookieStorage({
+export let sessionStorage = createCookieSessionStorage({
     cookie: {
         name: '_session',
         sameSite: 'lax', //this helps with CSRF

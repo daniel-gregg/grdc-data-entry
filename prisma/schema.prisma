@@ -23,5 +23,5 @@ model Totp {
   hash String @unique
   attempts Int @default(0)
   active Boolean @default(true)
-  expiresAt DateTime
+  expiresAt DateTime @default(dbgenerated("now() + interval '15 minutes'"))
 }

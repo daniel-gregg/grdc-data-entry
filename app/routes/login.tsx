@@ -1,12 +1,12 @@
 import { json } from '@remix-run/node';
 import { Resend } from 'resend';
 import {Navbar} from '~/components/Navbar'; 
-import { send } from '~/components/send';
+import { sendEmail } from '~/components/send';
 import { type ActionFunction, redirect } from "@remix-run/node";
 import { Form } from '@remix-run/react';
 
 export let action: ActionFunction = async ({ request }) => {
-    await send()
+    await sendEmail()
     return redirect("/authenticateLogin")
   }
 
