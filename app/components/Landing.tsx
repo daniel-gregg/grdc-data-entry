@@ -1,27 +1,37 @@
-import affine_logo_large from "../../public/assets/images/Affine.png";
-import {Navbar} from '~/components/Navbar'; 
+import { Navbar } from '~/components/Navbar';
+import affine_logo_large from '../../public/assets/images/Affine.png';
 
-export const Landing = () => {
-    
+export function Landing() {
     return (
         <div className="bg-[#1d6146] py-6 sm:py-6">
-
             {/* navbar */}
             <Navbar />
-            
+
             {/* hero */}
             <section className="bg-white dark:bg-gray-900">
                 <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-2 lg:grid-cols-12">
                     <div className="mr-auto place-self-center lg:col-span-7">
-                        <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Supply chain sustainability assessment and communication</h1>
-                        <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Affine makes assessing and communicating your supply chain sustainability performance easy and valuable.</p>
-                        <a href="#" className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                        <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+                            Supply chain sustainability assessment and
+                            communication
+                        </h1>
+                        <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                            Affine makes assessing and communicating your supply
+                            chain sustainability performance easy and valuable.
+                        </p>
+                        <a
+                            href="#"
+                            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                        >
                             About Affine
-                        </a> 
+                        </a>
                     </div>
                     <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                        <img src= {affine_logo_large} alt="mockup" />
-                    </div>                
+                        <img
+                            src={affine_logo_large}
+                            alt="mockup"
+                        />
+                    </div>
                 </div>
             </section>
 
@@ -37,9 +47,19 @@ export const Landing = () => {
                                 Robust and effective sustainability assessments
                             </div>
                             <div className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-300">
-                                <p className="flex-auto">Sustainability assessment in your supply chains doesn’t need to be hard, for you or your suppliers.</p>
+                                <p className="flex-auto">
+                                    Sustainability assessment in your supply
+                                    chains doesn’t need to be hard, for you or
+                                    your suppliers.
+                                </p>
                                 <p className="mt-6">
-                                <a href="#" className="text-sm font-semibold leading-6 text-gray-300">Learn more <span aria-hidden="true">→</span></a>
+                                    <a
+                                        href="#"
+                                        className="text-sm font-semibold leading-6 text-gray-300"
+                                    >
+                                        Learn more{' '}
+                                        <span aria-hidden="true">→</span>
+                                    </a>
                                 </p>
                             </div>
                         </div>
@@ -51,9 +71,19 @@ export const Landing = () => {
                                 Simple, and secure, reporting to stakeholders
                             </div>
                             <div className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-300">
-                                <p className="flex-auto">Know your sustainability but struggling to communicate impact in a trusted way? Try Affine.</p>
+                                <p className="flex-auto">
+                                    Know your sustainability but struggling to
+                                    communicate impact in a trusted way? Try
+                                    Affine.
+                                </p>
                                 <p className="mt-6">
-                                <a href="#" className="text-sm font-semibold leading-6 text-gray-300">Learn more <span aria-hidden="true">→</span></a>
+                                    <a
+                                        href="#"
+                                        className="text-sm font-semibold leading-6 text-gray-300"
+                                    >
+                                        Learn more{' '}
+                                        <span aria-hidden="true">→</span>
+                                    </a>
                                 </p>
                             </div>
                         </div>
@@ -65,17 +95,25 @@ export const Landing = () => {
                                 Build value from, and for, your suppliers
                             </div>
                             <div className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-300">
-                                <p className="flex-auto">Build value around sustainability reporting alongside your suppliers and customers through Affine.</p>
+                                <p className="flex-auto">
+                                    Build value around sustainability reporting
+                                    alongside your suppliers and customers
+                                    through Affine.
+                                </p>
                                 <p className="mt-6">
-                                <a href="#" className="text-sm font-semibold leading-6 text-gray-300">Learn more <span aria-hidden="true">→</span></a>
+                                    <a
+                                        href="#"
+                                        className="text-sm font-semibold leading-6 text-gray-300"
+                                    >
+                                        Learn more{' '}
+                                        <span aria-hidden="true">→</span>
+                                    </a>
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-        
-      );
+    );
 }
