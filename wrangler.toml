@@ -1,0 +1,21 @@
+compatibility_date = "2023-04-20"
+main = "./build/index.js"
+
+workers_dev = true
+node_compat = true
+logpush = true
+
+[build]
+command = "npm run build"
+
+[site]
+  bucket = "./public"
+
+[env]
+name = "affine"
+routes = [
+    "affine.heuris.com.au",
+]
+
+[env.aus.vars]
+TEST='test'
