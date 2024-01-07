@@ -8,8 +8,6 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
-  useRevalidator,
 } from "@remix-run/react";
 
 
