@@ -15,9 +15,7 @@ if (process.env.NODE_ENV === 'development') {
 export default {
     async fetch(
         request: Request,
-        env: {
-            __STATIC_CONTENT: Fetcher;
-        },
+        env: Env,
         ctx: ExecutionContext,
     ): Promise<Response> {
         try {
@@ -40,7 +38,7 @@ export default {
                 },
             );
         } catch (error) {
-            // No-op
+            console.error(error);
         }
 
         try {

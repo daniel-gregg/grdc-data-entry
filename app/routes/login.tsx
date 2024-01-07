@@ -3,8 +3,9 @@ import { Form } from '@remix-run/react';
 import { Navbar } from '~/components/Navbar';
 import { sendEmail } from '~/components/send';
 
-export const action: ActionFunction = async ({ request }) => {
-    await sendEmail();
+export const action: ActionFunction = async ({ context }) => {
+    console.log(context.env);
+    await sendEmail(context.env?.RESEND_API_KEY as string);
     return redirect('/authenticateLogin');
 };
 

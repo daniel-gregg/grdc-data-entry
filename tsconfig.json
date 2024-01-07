@@ -1,5 +1,4 @@
 {
-  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "isolatedModules": true,
@@ -21,5 +20,6 @@
     // Remix takes care of building everything in `remix build`.
     "noEmit": true
   },
-  "exclude": ["node_modules"]
+  "include": ["remix.env.d.ts", "manifest.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "build", "public", ".eslintrc.cjs", "remix.config.js"]
 }

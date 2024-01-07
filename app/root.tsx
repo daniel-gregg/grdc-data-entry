@@ -7,11 +7,9 @@ import {
     Scripts,
     ScrollRestoration,
 } from '@remix-run/react';
-import { cssBundleHref } from '@remix-run/css-bundle';
+import appCss from '~/app.css';
 
-export const links: LinksFunction = () => [
-    ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
-];
+export const links: LinksFunction = () => [{ rel: 'stylesheet', href: appCss }];
 
 // App export from root
 export default function App() {
