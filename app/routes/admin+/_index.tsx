@@ -1,4 +1,4 @@
-import type { DataFunctionArgs } from '@remix-run/node'
+import type { LoaderFunctionArgs, ActionFunctionArgs } from '@remix-run/node'
 
 import { Form, useLoaderData } from '@remix-run/react'
 import { redirect, json } from '@remix-run/node'
@@ -8,7 +8,7 @@ import { authenticator } from '~/utils/auth/auth.server'
 import { getSession, destroySession } from '~/utils/auth/auth-session.server'
 import { useDoubleCheck } from '~/utils/hooks/use-double-check'
 
-export async function loader({ request }: DataFunctionArgs) {
+export async function loader({ request }: LoaderFunctionArgs) {
   const session = await authenticator.isAuthenticated(request, {
     failureRedirect: '/auth/login',
   })
@@ -19,7 +19,7 @@ export async function loader({ request }: DataFunctionArgs) {
   return json({ user } as const)
 }
 
-export async function action({ request }: DataFunctionArgs) {
+export async function action({ request }: ActionFunctionArgs) {
   const session = await authenticator.isAuthenticated(request, {
     failureRedirect: '/login',
   })

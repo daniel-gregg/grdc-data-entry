@@ -7,6 +7,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
   await authenticator.authenticate('TOTP', request, {
     successRedirect: '/admin',
-    failureRedirect: '/login',
+    failureRedirect: '/auth/login',
   })
 }
