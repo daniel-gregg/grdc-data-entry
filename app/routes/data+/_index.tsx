@@ -1,8 +1,21 @@
 import SurveyCoreAll from "survey-core"
-const { SurveyModel } = SurveyCoreAll
+const { SurveyModel, StylesManager } = SurveyCoreAll
 import UiAll from "survey-react-ui";
 const { Survey } = UiAll
-import "survey-core/defaultV2.css";
+import "survey-core/defaultV2.min.css";
+import { surveyTheme } from '~/styles/surveyTheme';
+import { json } from "@remix-run/node";
+
+import { cssBundleHref } from "@remix-run/css-bundle";
+import type { LinksFunction } from "@remix-run/node"; // or cloudflare/deno
+
+export const links: LinksFunction = () => [
+  ...(cssBundleHref
+    ? [{ rel: "stylesheet", href: "https://unpkg.com/survey-core/defaultV2.min.css" },]
+      /* {rel: "stylesheet", href: "https://unpkg.com/survey-core/layered-dark-panelless.min.js"}] */
+    : []),
+  // ...
+];
 
 const surveyJson: any = {
   elements: [{
@@ -15,8 +28,7 @@ const surveyJson: any = {
     type: "text"
   }]
 }
-  
-const survey = new SurveyModel(surveyJson);
+
 
 function onValueChanged(options: { value: string; }) {
   console.log("New value: " + options.value);
@@ -27,6 +39,8 @@ function onComplete(survey: { data: JSON; }) {
 }
 
 export default function SurveyPage() {
+  const survey = new SurveyModel(surveyJson);
+  /* survey.applyTheme(); */
   return (
     <div className="container">
       <h1>SurveyJS Library / Runner</h1>

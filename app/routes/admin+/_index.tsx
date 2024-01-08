@@ -38,6 +38,7 @@ export async function action({ request }: ActionFunctionArgs) {
   })
 }
 
+
 export default function AdminIndex() {
   const { user } = useLoaderData<typeof loader>()
   const { doubleCheck, getButtonProps } = useDoubleCheck()
