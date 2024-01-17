@@ -6,7 +6,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   const currentPath = url.pathname
 
   await authenticator.authenticate('TOTP', request, {
-    successRedirect: '/admin',
-    failureRedirect: '/auth/login',
+    successRedirect: currentPath,
+    failureRedirect: currentPath,
   })
 }

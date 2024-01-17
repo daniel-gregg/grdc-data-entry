@@ -10,13 +10,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// All people accessing any functionality of Affine have a user account
+// Users are only the human interface to Affine reporting and data entry
+// So, Users without an organisation can only view reports that they are given access to
+// All other functionality is nested within an organisation:
+//   * requesting module completion
+//   * adding suppliers
+//   * creating reports
+//   * requesting viewers for reports
+//   * etc. 
+// Users must be a member of an organisation to undertake these activities
+
 model User {
-  id String  @unique @default(uuid())
+  id String  @id @unique @default(uuid())
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
   email String @unique
+
 }
 
+// TOTP authorisations table
 model Totp {
   id String   @id @default(uuid())
   createdAt DateTime? @default(now())

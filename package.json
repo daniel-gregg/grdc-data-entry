@@ -26,7 +26,9 @@
     "remix-auth-auth0": "^1.9.0",
     "remix-auth-totp": "^2.0.0",
     "remix-flat-routes": "^0.6.4",
-    "resend": "^2.1.0"
+    "resend": "^2.1.0",
+    "survey-core": "^1.9.124",
+    "survey-react-ui": "^1.9.124"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.4.1",

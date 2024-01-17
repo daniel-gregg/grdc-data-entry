@@ -6,7 +6,7 @@ import { getSession, commitSession } from '~/utils/auth/auth-session.server'
 
 export async function loader({ request }: LoaderFunctionArgs) {
   await authenticator.isAuthenticated(request, {
-    successRedirect: '/admin',
+    successRedirect: '/admin', //on reload (see action below) it redirects if authentication successful
   })
 
   const cookie = await getSession(request.headers.get('cookie'))
