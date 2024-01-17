@@ -3,7 +3,7 @@
  * Code adapted and modified for this template.
  */
 import { useState } from 'react'
-import { callAll } from '~/utils/misc.ts'
+import { callAll } from '~/utils/misc'
 
 export function useDoubleCheck() {
   const [doubleCheck, setDoubleCheck] = useState(false)
