@@ -49,7 +49,7 @@ export default function Verify() {
                 Please check your inbox
               </h1>
               <p className="text-center text-base font-normal text-gray-600">
-                We've sent you a magic link email.
+                We've sent you an email with a code.
               </p>
             </div>
           </div>

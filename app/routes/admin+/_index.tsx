@@ -21,11 +21,11 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 export async function action({ request }: ActionFunctionArgs) {
   const session = await authenticator.isAuthenticated(request, {
-    failureRedirect: '/login',
+    failureRedirect: '/auth/login',
   })
 
   const user = await db.user.findUnique({ where: { id: session.id } })
-  if (!user) return redirect('/login')
+  if (!user) return redirect('/auth/login')
 
   // Delete user.
   await db.user.delete({ where: { id: session.id } })

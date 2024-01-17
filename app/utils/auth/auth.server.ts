@@ -18,7 +18,7 @@ authenticator.use(
   new TOTPStrategy(
     {
       secret: process.env.ENCRYPTION_SECRET,
-      magicLinkGeneration: { callbackPath: '/magic-link' },
+      //magicLinkGeneration: { callbackPath: '/magic-link' },
 
       createTOTP: async (data, expiresAt) => {
         await db.totp.create({ data: { ...data, expiresAt } })
@@ -39,7 +39,7 @@ authenticator.use(
         await db.totp.update({ where: { hash }, data })
       },
       sendTOTP: async ({ email, code, magicLink }) => {
-        await sendAuthEmail({ email, code, magicLink })
+        await sendAuthEmail({ email, code })
       },
     },
     async ({ email }) => {

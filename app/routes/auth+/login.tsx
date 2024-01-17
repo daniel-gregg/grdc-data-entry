@@ -1,6 +1,6 @@
 import { json } from '@remix-run/node';
 import {Navbar} from '~/components/Navbar'; 
-import { LoaderFunctionArgs, ActionFunctionArgs, redirect } from "@remix-run/node";
+import { LoaderFunctionArgs, ActionFunctionArgs } from "@remix-run/node";
 import { Form, useLoaderData } from '@remix-run/react'
 
 import { authenticator } from '~/utils/auth/auth.server';
