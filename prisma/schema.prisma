@@ -28,14 +28,20 @@ model User {
   email String @unique
 
   //details of user - make optional for completion in profile
-  //firstName String?
-  //lastName String?
+  firstName String?
+  lastName String?
+
+  //user has reports they can view
+  reportsView Report[] @relation(name: "reportsViewer")
+
+  //user is the author of reports
+  reportsAuthor Report[] @relation(name: "AuthorId")
 
   //Map to organisation as userOrgId
-  //organisationId Organisation? @relation(fields: [id], references: [id], map: "orgUserId", name: "orgUserId")
+  organisationId Organisation? @relation(fields: [id], references: [id], map: "orgUserId", name: "orgUserId")
   
   //Map to organisation as userAdminId
-  //orgAdminId Organisation? @relation(fields: [id], references: [id], map: "orgAdminId", name: "orgAdminId")
+  orgAdminId Organisation? @relation(fields: [id], references: [id], map: "orgAdminId", name: "orgAdminId")
 }
 
 // Organisations are the key centralising component of Affine. Organisations create reports, request data inputs, aggregate results, etc.
@@ -44,37 +50,113 @@ model User {
 // While users can be a member of many organisations, organisations themselves are solitary in the Affine ecosystem - they only interact through
 //   actions that are formal linkages provided through affine (e.g. requesting data from a supplier/producer, sending a report for viewing by a target stakeholder)
 
-//model Organisation {
-//  id String @id @unique @default(uuid())
-//  name String
+model Organisation {
+  id String @id @unique @default(uuid())
+  name String
 
   // Organisation type
-  //type OrgType[]
+  type OrgType[]
 
   // Org has many admins
-  //orgAdminID User[] @relation(name: "orgAdminId")
+  orgAdminID User[] @relation(name: "orgAdminId")
 
   // Org has many users
-  //userOrgId User[] @relation(name: "orgUserId")
+  userOrgId User[] @relation(name: "orgUserId")
 
   //organisation has modules to complete - no duplicates needed. Once completed one maps through to any module completion for that module
-  //orgModules Module[]
+  orgModules Module[]
 
   //Organisation has results from module completions
-  //results Result[]
+  results Result[]
 
   // Org has many reports
-  //orgReportId Report[] @relation(name: "orgReportId")
+  orgReportId Report[] @relation(name: "orgReportId")
+}
+
+// LEAVE FOR LATER
+//model Department {
+//  id String @unique @default(uuid())
+//  name String
+//
+  //map to organisation
+//  organisationId Organisation? @relation(fields: [id], references: [id])
+//
+  //map to user
+//  userDepId User[]
 //}
 
-//enum OrgType {
-//  SUPPLIER
-//  SUPERMARKET
-//  WHOLESALE
-//  FINANCE
-//  INSURANCE
-//  ASSURANCE_AND_CERTIFICATION
-//}
+enum OrgType {
+  SUPPLIER
+  SUPERMARKET
+  WHOLESALE
+  FINANCE
+  INSURANCE
+  ASSURANCE_AND_CERTIFICATION
+}
+
+// Data collection modules - these are basic SurveyJS components for completion
+model Module {
+  // Identifying details
+  id String @id @default(uuid())
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now())
+
+  // Model definition (this is a surveyJS survey definition)
+  model Json
+
+  // Description and tags
+  moduleName String
+  moduleDescription String
+
+  //map to collection
+  collection Collection[]
+
+  //map to user - optional and many to many
+  orgModules  Organisation[]
+
+  //module has many
+  moduleResults Result[]
+}
+
+// A collection pulls together a set of modules to target a specific 'topic' (e.g. red meat carbon)
+// This is like a 'tags' table that allows for simpler collating of modules as groups to send for completion
+model Collection {
+  id String @id @default(uuid())
+  collectionName String
+  description String
+
+  // many to many relationship with modules (modules can be in many collections and vice versa)
+  modules Module[]
+
+}
+
+model Result {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  expiresAt DateTime? @default(now())
+
+  //result JSON
+  resultJSON Json 
+
+  //map to module
+  resultModuleId Module @relation(fields: [id], references: [id], map: "moduleResults")
+
+  //map to organisation
+  orgId   Organisation @relation(fields: [id], references: [id], map: "orgModules")
+}
+
+model Report {
+  id String @id @default(uuid())
+  title String
+  author User? @relation(fields: [id], references: [id], name: "AuthorId")
+  orgAuthor Organisation @relation(fields: [id], references:[id], map: "orgReportId", name: "orgReportId")
+  description String
+
+  //Viewers of the report
+  viewers User[] @relation(name: "reportsViewer")
+
+}
 
 // TOTP authorisations table
 model Totp {
