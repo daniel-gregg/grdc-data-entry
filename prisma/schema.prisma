@@ -38,10 +38,10 @@ model User {
   reportsAuthor Report[] @relation(name: "AuthorId")
 
   //Map to organisation as userOrgId
-  organisationId Organisation? @relation(fields: [id], references: [id], map: "orgUserId", name: "orgUserId")
+  organisation Organisation[] @relation(name: "orgUserId")
   
   //Map to organisation as userAdminId
-  orgAdminId Organisation? @relation(fields: [id], references: [id], map: "orgAdminId", name: "orgAdminId")
+  orgAdminId Organisation[] @relation(name: "orgAdminId")
 }
 
 // Organisations are the key centralising component of Affine. Organisations create reports, request data inputs, aggregate results, etc.
@@ -52,7 +52,7 @@ model User {
 
 model Organisation {
   id String @id @unique @default(uuid())
-  name String
+  name String @unique
 
   // Organisation type
   type OrgType[]
@@ -61,13 +61,13 @@ model Organisation {
   orgAdminID User[] @relation(name: "orgAdminId")
 
   // Org has many users
-  userOrgId User[] @relation(name: "orgUserId")
+  orgUserId User[] @relation(name: "orgUserId")
 
   //organisation has modules to complete - no duplicates needed. Once completed one maps through to any module completion for that module
   orgModules Module[]
 
   //Organisation has results from module completions
-  results Result[]
+  //results Result[]
 
   // Org has many reports
   orgReportId Report[] @relation(name: "orgReportId")
@@ -105,7 +105,7 @@ model Module {
   model Json
 
   // Description and tags
-  moduleName String
+  moduleName String @unique
   moduleDescription String
 
   //map to collection
@@ -115,7 +115,7 @@ model Module {
   orgModules  Organisation[]
 
   //module has many
-  moduleResults Result[]
+  //moduleResults Result[]
 }
 
 // A collection pulls together a set of modules to target a specific 'topic' (e.g. red meat carbon)
@@ -137,13 +137,13 @@ model Result {
   expiresAt DateTime? @default(now())
 
   //result JSON
-  resultJSON Json 
+  resultJSON String
 
   //map to module
-  resultModuleId Module @relation(fields: [id], references: [id], map: "moduleResults")
+  resultModuleId String
 
   //map to organisation
-  orgId   Organisation @relation(fields: [id], references: [id], map: "orgModules")
+  //orgId   Organisation? @relation(fields: [id], references: [id], map: "orgModules")
 }
 
 model Report {

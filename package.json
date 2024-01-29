@@ -1,6 +1,7 @@
 {
   "name": "affine-remix",
   "private": true,
+  "prisma": {},
   "sideEffects": false,
   "type": "module",
   "scripts": {
@@ -27,8 +28,10 @@
     "remix-auth-totp": "^2.0.0",
     "remix-flat-routes": "^0.6.4",
     "resend": "^2.1.0",
-    "survey-core": "^1.9.124",
-    "survey-react-ui": "^1.9.124"
+    "survey-core": "^1.9.127",
+    "survey-react-ui": "^1.9.124",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.4.1",
