@@ -2,6 +2,7 @@ import { json } from '@remix-run/node';
 import {Navbar} from '~/components/Navbar'; 
 import { LoaderFunctionArgs, ActionFunctionArgs } from "@remix-run/node";
 import { Form, useLoaderData } from '@remix-run/react'
+import { db } from '~/utils/db.server'
 
 import { authenticator } from '~/utils/auth/auth.server';
 import { getSession, commitSession } from '~/utils/auth/auth-session.server'
@@ -25,9 +26,29 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 export async function action({ request }: ActionFunctionArgs) {
     const url = new URL(request.url)
-    const currentPath = url.pathname
-  
-    await authenticator.authenticate('TOTP', request, {
+    const currentPath = url.pathname //"/auth/login"
+
+    const req = request
+
+    //Get the email string from the formData
+    const body = await request.formData();
+    const emailString = JSON.stringify((body.get("email")))
+
+    //Check if the email is included in the DB already - THIS IS NOT WORKING BUT findMany does?!?!?!?
+    const emailCheck = await db.user.findFirst({
+      where: { email: JSON.parse(emailString) },
+    })
+    
+
+    //If so, continue through to TOTP process
+    if(!emailCheck){
+      console.log("i failed...")
+      //If not, return a failure
+      throw new Error("Whoops! this user doesn't exist. If you think it should please contact the administrator")
+    } 
+
+    //else go to authenticator
+    await authenticator.authenticate('TOTP', req, {
       // The `successRedirect` route will be used to verify the OTP code.
       // This could be the current pathname or any other route that renders the verification form.
       successRedirect: '/auth/verify',
@@ -36,6 +57,7 @@ export async function action({ request }: ActionFunctionArgs) {
       // If not provided, ErrorBoundary will be rendered instead.
       failureRedirect: currentPath,
     })
+
   }
 
   

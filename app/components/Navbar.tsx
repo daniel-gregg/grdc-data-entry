@@ -21,16 +21,10 @@ export const Navbar = () => {
                             <Link to="/" className="block py-2 px-3 md:p-0 text-white bg-[#1d6146] rounded md:bg-transparent md:text-[#1d6146] md:dark:text-[#1d6146]" aria-current="page">Home</Link>
                         </li>
                         <li>
-                            <Link to="/about" className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-[#1d6146] md:hover:bg-transparent md:hover:text-[#1d6146] md:dark:hover:text-[#1d6146] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</Link>
+                            <Link to="/dashboard" className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-[#1d6146] md:hover:bg-transparent md:hover:text-[#1d6146] md:dark:hover:text-[#1d6146] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Dashboard</Link>
                         </li>
                         <li>
-                            <Link to="/services" className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-[#1d6146] md:hover:bg-transparent md:hover:text-[#1d6146] d:dark:hover:text-[#1d6146] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</Link>
-                        </li>
-                        <li>
-                            <Link to="/contact" className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-[#1d6146] md:hover:bg-transparent md:hover:text-[#1d6146] md:dark:hover:text-[#1d6146] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</Link>
-                        </li>
-                        <li>
-                            <Link to="/auth/login" className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-[#1d6146] md:hover:bg-transparent md:hover:text-[#1d6146] md:dark:hover:text-[#1d6146] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Login</Link>
+                            <Link to="/admin" className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-[#1d6146] md:hover:bg-transparent md:hover:text-[#1d6146] md:dark:hover:text-[#1d6146] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Admin</Link>
                         </li>
                         <link rel="prefetch" />
                         </ul>

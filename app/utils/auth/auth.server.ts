@@ -16,7 +16,8 @@ export let authenticator = new Authenticator<User>(authSessionStorage, {
  */
 authenticator.use(
   new TOTPStrategy(
-    {
+    { 
+      
       secret: process.env.ENCRYPTION_SECRET,
       //magicLinkGeneration: { callbackPath: '/magic-link' },
 
@@ -46,8 +47,8 @@ authenticator.use(
       let user = await db.user.findUnique({ where: { email } })
 
       if (!user) {
-        user = await db.user.create({ data: { email } })
-        if (!user) throw new Error('Whoops! Unable to create user.')
+        //user = await db.user.create({ data: { email } })
+        if (!user) throw new Error("Whoops! this user doesn't exist. If you think it should please contact the.")
       }
 
       return user

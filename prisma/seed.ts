@@ -14,9 +14,7 @@ const modules = []
 
 //loop through modules and create f doesn't already exist
 async function main() {
-
-    //check if modules exist first
-    const fss_impact_eval = await prisma.module.upsert({
+    const grdc_seed_db = await prisma.module.upsert({
         where: { moduleName: "FSS project assessment", },
         update: {},
         create: {
@@ -411,12 +409,11 @@ async function main() {
         }
     })
 
-    const org = await prisma.organisation.upsert({
-        where: { name: "Test Organisation", },
-        update: {},
-        create: {
-           name: "Test Organisation"
-        }
+    const user = await prisma.user.createMany({
+        data: [
+            {email: "daniel.gregg@adelaide.edu.au"},
+            {email: "matthew.knowling@adelaide.edu.au"}
+        ]
     })
 }
 

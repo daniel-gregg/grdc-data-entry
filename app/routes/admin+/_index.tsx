@@ -1,5 +1,5 @@
 import type { LoaderFunctionArgs, ActionFunctionArgs } from '@remix-run/node'
-
+import { Navbar } from "../../components/Navbar"
 import { Form, useLoaderData } from '@remix-run/react'
 import { redirect, json } from '@remix-run/node'
 
@@ -47,6 +47,9 @@ export default function AdminIndex() {
     <div className="mx-auto flex h-screen w-screen max-w-7xl flex-col px-6">
       {/* Background. */}
       <div className="blobs opacity-10" />
+
+      {/* navbar */}
+      <Navbar />
 
       {/* Content */}
       <div className="mx-auto flex h-full w-full max-w-[280px] flex-col items-center justify-center gap-6">
