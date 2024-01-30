@@ -29,7 +29,7 @@
     "remix-flat-routes": "^0.6.4",
     "resend": "^2.1.0",
     "survey-core": "^1.9.127",
-    "survey-react-ui": "^1.9.124",
+    "survey-react-ui": "^1.9.127",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0"
   },
