@@ -28,7 +28,7 @@ export async function action({ request }: ActionFunctionArgs) {
     const url = new URL(request.url)
     const currentPath = url.pathname //"/auth/login"
 
-    const req = request
+    const req = request.clone()
 
     //Get the email string from the formData
     const body = await request.formData();
@@ -42,7 +42,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
     //If so, continue through to TOTP process
     if(!emailCheck){
-      console.log("i failed...")
+      console.log("Email is not in DB")
       //If not, return a failure
       throw new Error("Whoops! this user doesn't exist. If you think it should please contact the administrator")
     } 

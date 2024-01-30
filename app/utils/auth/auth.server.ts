@@ -15,6 +15,7 @@ export let authenticator = new Authenticator<User>(authSessionStorage, {
  * TOTP - Strategy.
  */
 authenticator.use(
+
   new TOTPStrategy(
     { 
       
