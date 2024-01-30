@@ -5,7 +5,7 @@ import { Link } from "@remix-run/react"
 export const Landing = () => {
     
     return (
-        <div className="min-h-screen bg-[#7A9A8B] py-6 sm:py-6">
+        <div className="min-h-screen bg-[#7A9A8B] py-20 sm:py-20">
 
             {/* navbar */}
             <Navbar/>

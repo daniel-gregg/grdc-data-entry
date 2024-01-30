@@ -44,17 +44,16 @@ export default function AdminIndex() {
   const { doubleCheck, getButtonProps } = useDoubleCheck()
 
   return (
-    <div className="mx-auto flex h-screen w-screen max-w-7xl flex-col px-6">
+    <div className="bg-[#7A9A8B] py-20 sm:py-20">
       {/* Background. */}
-      <div className="blobs opacity-10" />
 
       {/* navbar */}
       <Navbar />
 
       {/* Content */}
-      <div className="mx-auto flex h-full w-full max-w-[280px] flex-col items-center justify-center gap-6">
+      <section className="h-196 bg-white dark:bg-gray-900 items-center">
         {/* Account Info */}
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-2 py-10">
           <span className="h-24 w-24 text-8xl transition duration-200 hover:-translate-y-1">
             🥳
           </span>
@@ -70,7 +69,7 @@ export default function AdminIndex() {
         </div>
 
         {/* Account Actions */}
-        <div className="flex w-full flex-col gap-2">
+        <div className="flex w-full flex-col gap-2 py-5 items-center">
           {/* Delete Account */}
           <Form method="POST" autoComplete="off">
             <button
@@ -78,7 +77,7 @@ export default function AdminIndex() {
                 type: 'submit',
                 name: 'intent',
                 value: 'disable',
-                className: `clickable flex h-10 w-full items-center justify-center rounded-md font-semibold bg-gray-800 text-white ${
+                className: `inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800 ${
                   doubleCheck && '!bg-red-500'
                 }`,
               })}>
@@ -90,12 +89,12 @@ export default function AdminIndex() {
           <Form method="POST" action="/auth/logout" autoComplete="off">
             <button
               type="submit"
-              className="clickable flex h-10 w-full items-center justify-center rounded-md bg-gray-200 font-semibold text-black">
+              className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
               Log out
             </button>
           </Form>
         </div>
-      </div>
+      </section>
 
     </div>
   )
